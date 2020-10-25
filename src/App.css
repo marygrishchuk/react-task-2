@@ -1,0 +1,22 @@
+.app-wrapper {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.value-setter-wrapper, .counter-wrapper {
+    padding: 5px;
+    border: 1px solid aquamarine;
+    border-radius: 5px;
+    background-color: #24292e;
+    width: 180px;
+    margin: 50px;
+    display: inline-block;
+}
+
+.inputBlock, .btnBlock {
+    width: 160px;
+    border: 1px solid aquamarine;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px auto
+}
