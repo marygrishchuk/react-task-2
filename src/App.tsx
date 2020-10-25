@@ -54,7 +54,6 @@ function App() {
         localStorage.setItem("maxValue", maxValue.toString())
     }
 
-
     function changeDigit(displayedDigit: number) {
         setDisplayedDigit(displayedDigit)
         disableButton(displayedDigit)
@@ -65,8 +64,6 @@ function App() {
             setDisabledInc(true)
         } else if (displayedDigit === startValue) {
             setDisabledInc(false)
-        } else {
-            setDisabledReset(false)
         }
     }
 
@@ -87,7 +84,8 @@ function App() {
             <div className="counter-wrapper">
                 <Display displayedDigit={displayedDigit} maxValue={maxValue} prompt={prompt}/>
                 <div className="btnBlock">
-                    <Button title={"inc"} disabled={disabledInc} changeDigit={changeDigit} displayedDigit={displayedDigit}/>
+                    <Button title={"inc"} disabled={disabledInc} changeDigit={changeDigit}
+                            displayedDigit={displayedDigit}/>
                     <Button title={"reset"} disabled={disabledReset} changeDigit={changeDigit} startValue={startValue}/>
                 </div>
             </div>
