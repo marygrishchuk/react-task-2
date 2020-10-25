@@ -19,7 +19,7 @@ function App() {
     let [disabledInc, setDisabledInc] = useState<boolean>(false)
     let [disabledReset, setDisabledReset] = useState<boolean>(false)
     let [disabledSet, setDisabledSet] = useState<boolean>(true)
-    let [counterDigit, setCounterDigit] = useState<number>(localStorageStartValue)
+    let [displayedDigit, setDisplayedDigit] = useState<number>(localStorageStartValue)
 
     function onValueChange(inputDigit: number, title: string) {
         if (title === "start value:") {
@@ -49,21 +49,21 @@ function App() {
         setDisabledInc(false)
         setDisabledReset(false)
         setPrompt("")
-        setCounterDigit(startValue)
+        setDisplayedDigit(startValue)
         localStorage.setItem("startValue", startValue.toString())
         localStorage.setItem("maxValue", maxValue.toString())
     }
 
 
-    function changeDigit(counterDigit: number) {
-        setCounterDigit(counterDigit)
-        disableButton(counterDigit)
+    function changeDigit(displayedDigit: number) {
+        setDisplayedDigit(displayedDigit)
+        disableButton(displayedDigit)
     }
 
-    function disableButton(counterDigit: number) {
-        if (counterDigit === maxValue) {
+    function disableButton(displayedDigit: number) {
+        if (displayedDigit === maxValue) {
             setDisabledInc(true)
-        } else if (counterDigit === startValue) {
+        } else if (displayedDigit === startValue) {
             setDisabledInc(false)
         } else {
             setDisabledReset(false)
@@ -85,13 +85,13 @@ function App() {
                 </div>
             </div>
             <div className="counter-wrapper">
-                <Display counterDigit={counterDigit} maxValue={maxValue} prompt={prompt}/>
+                <Display displayedDigit={displayedDigit} maxValue={maxValue} prompt={prompt}/>
                 <div className="btnBlock">
-                    <Button title={"inc"} disabled={disabledInc} changeDigit={changeDigit} counterDigit={counterDigit}/>
+                    <Button title={"inc"} disabled={disabledInc} changeDigit={changeDigit} displayedDigit={displayedDigit}/>
                     <Button title={"reset"}
                             disabled={disabledReset}
                             changeDigit={changeDigit}
-                            counterDigit={counterDigit}
+                            displayedDigit={displayedDigit}
                             startValue={startValue}/>
                 </div>
             </div>
