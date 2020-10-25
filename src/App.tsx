@@ -5,21 +5,20 @@ import {Button} from "./components/Button/Button";
 import {InputForm} from "./components/InputForm/InputForm";
 
 function App() {
-    let localStorageStartValue = Number(localStorage.getItem("startValue"))
-    let localStorageMaxValue = Number(localStorage.getItem("maxValue"))
 
-    useEffect(() => {
-        setStartValue(localStorageStartValue)
-        setMaxValue(localStorageMaxValue)
-    }, [localStorageStartValue, localStorageMaxValue])
 
-    let [startValue, setStartValue] = useState<number>(0)
-    let [maxValue, setMaxValue] = useState<number>(5)
+    let [startValue, setStartValue] = useState<number>(Number(localStorage.getItem("startValue")) || 0)
+    let [maxValue, setMaxValue] = useState<number>(Number(localStorage.getItem("maxValue")) || 5)
     let [prompt, setPrompt] = useState<string>("")
     let [disabledInc, setDisabledInc] = useState<boolean>(false)
     let [disabledReset, setDisabledReset] = useState<boolean>(false)
     let [disabledSet, setDisabledSet] = useState<boolean>(true)
-    let [displayedDigit, setDisplayedDigit] = useState<number>(localStorageStartValue)
+    let [displayedDigit, setDisplayedDigit] = useState<number>(startValue)
+
+    useEffect(() => {
+        localStorage.setItem("startValue", startValue.toString())
+        localStorage.setItem("maxValue", maxValue.toString())
+    }, [startValue, maxValue])
 
     function onValueChange(inputDigit: number, title: string) {
         if (title === "start value:") {
@@ -50,8 +49,6 @@ function App() {
         setDisabledReset(false)
         setPrompt("")
         setDisplayedDigit(startValue)
-        localStorage.setItem("startValue", startValue.toString())
-        localStorage.setItem("maxValue", maxValue.toString())
     }
 
     function changeDigit(displayedDigit: number) {
