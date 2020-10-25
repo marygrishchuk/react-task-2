@@ -88,11 +88,7 @@ function App() {
                 <Display displayedDigit={displayedDigit} maxValue={maxValue} prompt={prompt}/>
                 <div className="btnBlock">
                     <Button title={"inc"} disabled={disabledInc} changeDigit={changeDigit} displayedDigit={displayedDigit}/>
-                    <Button title={"reset"}
-                            disabled={disabledReset}
-                            changeDigit={changeDigit}
-                            displayedDigit={displayedDigit}
-                            startValue={startValue}/>
+                    <Button title={"reset"} disabled={disabledReset} changeDigit={changeDigit} startValue={startValue}/>
                 </div>
             </div>
         </div>

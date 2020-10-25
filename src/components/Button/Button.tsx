@@ -4,10 +4,10 @@ import s from './Button.module.css';
 type PropsType = {
     title: "inc" | "reset" | "set"
     disabled: boolean
-    changeDigit?: (displayedDigit: number) => void
-    displayedDigit?: number
-    onSetButtonClick?: () => void
     startValue?: number
+    displayedDigit?: number
+    changeDigit?: (displayedDigit: number) => void
+    onSetButtonClick?: () => void
 }
 
 export function Button(props: PropsType) {
